@@ -28,7 +28,7 @@ export interface Feedback {
 
 export const FEEDBACK_CAP = 200;
 export const NOTE_MAX = 500;
-export const FEEDBACK_REPO = 'https://github.com/brunopasqualini/brunopasqualini.github.io';
+export const FEEDBACK_REPO = 'https://github.com/brunopasqualini/system-design-simulator';
 
 export const DIFFICULTY_LABEL: Record<Difficulty, string> = {
   'too-easy': 'Too easy',
