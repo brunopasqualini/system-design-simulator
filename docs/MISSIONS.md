@@ -1,11 +1,10 @@
 # Authoring missions
 
-A mission is **data** (`src/content/missions/*.ts`, typed by `src/content/missions/types.ts`). The engine, scoring, evidence panels,
-persistence and debrief are shared; adding a mission needs no UI work.
+A mission is **data**: one file in `src/content/missions/`, typed by `types.ts`. The engine, scoring, evidence panels, persistence and debrief are shared, so a new mission needs no UI work.
 
 ```ts
 export const myMission: Mission = {
-  id: 'm7-example', number: 7, title: '…', tagline: '…',
+  id: 'm15-example', number: 15, title: '…', tagline: '…',
   difficulty: 'Intermediate', kind: 'incident',           // 'project' | 'incident'
   estMinutes: 25, prerequisites: ['m2-db-meltdown'],
   skills: { sd: 40, sre: 30 },                             // skill XP awarded on pass
