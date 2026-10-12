@@ -29,7 +29,7 @@ npm run typecheck
 npm run lint       # ESLint 10 flat config (react-hooks rules, import boundaries)
 npm run format     # Prettier
 npm run check      # typecheck + lint + tests
-npm run build      # static site in dist/ (relative base: host it anywhere, incl. GitHub Pages)
+npm run build      # static site in dist/ (relative base: host it anywhere)
 npm run preview
 ```
 
@@ -113,6 +113,20 @@ docs/             ARCHITECTURE.md (stack decisions and research), SIMULATION.md 
 - **Clear boundaries for a future backend:** the store is the only persistence consumer (`zustand/persist`); the
   simulation and scoring are pure functions.
 - See [`docs/SIMULATION.md`](docs/SIMULATION.md) for every rule and [`docs/MISSIONS.md`](docs/MISSIONS.md) to add a scenario. The canvas animation (Effects: Subtle / Full / Off) is described in [`docs/CANVAS_EFFECTS.md`](docs/CANVAS_EFFECTS.md).
+
+## Deployment
+
+This repository does not commit its build. The site `brunopasqualini.github.io` builds and publishes the app at
+<https://brunopasqualini.github.io/engineering-ops/>:
+
+1. A push to `main` runs `.github/workflows/ci.yml` (typecheck, lint, tests and build).
+2. If they pass, the workflow sends a `repository_dispatch` event (`project-updated`) to `brunopasqualini/brunopasqualini.github.io`.
+3. That repository checks out this one, runs `npm ci && npm run build`, copies `dist/` to `/engineering-ops/` and deploys the site.
+
+The workflow needs a repository secret named `SITE_DISPATCH_TOKEN`: a fine-grained personal access token with **Contents: Read and write**
+on `brunopasqualini/brunopasqualini.github.io` (GitHub requires that permission to send `repository_dispatch`).
+
+The old URL, `/engineering-ops/dist/`, redirects to `/engineering-ops/` and keeps the `#/…` route.
 
 ## Design notes
 
