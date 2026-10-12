@@ -1,57 +1,38 @@
-# Engineering Ops — Build. Break. Learn.
+# Engineering Ops: a software architecture and system design simulator
 
-An **engineering simulation platform**: _Build systems. Solve problems. Understand the consequences. Think like an
-engineer._ You design cloud architectures, deploy them, watch how they behave under load and failure, investigate
-incidents from logs/metrics/traces/changes, and learn from the _consequences_, not from memorising service names.
+_Build. Break. Learn._ **Live app: <https://brunopasqualini.github.io/engineering-ops/>** (free, in your browser, no signup).
 
-It is built for aspiring engineers and career changers who need to connect concepts into a working system, working
-software/cloud/DevOps/platform engineers who want practice beyond tutorials and certification questions, and developers
-growing into system-design responsibility who need to make and defend decisions. Progress runs through five stages of
-problem complexity (Software Engineer → System Designer → Cloud Engineer → Platform/SRE → Principal/Architect). Every
-stage has scenarios, and the capstone starts from the platform _you_ built: earlier decisions come back as named debts
-or benefits.
+Design AWS-style cloud architectures, deploy them, watch how they behave under load and failure, investigate incidents from logs, metrics, traces and change history, and learn from the consequences rather than from memorising service names. Fourteen missions, a sandbox Lab with chaos drills, traffic shapes, game days and attack simulations, and scoring across ten dimensions.
 
-- Real, runnable **React + TypeScript + Vite** app. No backend, no account, no cloud calls.
-- A deterministic, rule-based **simulation engine** (pure TypeScript, unit-tested) with explainable causal effects.
-- **Fourteen playable missions** on one data-driven engine, an **Architecture Lab** sandbox with chaos drills and traffic shapes (daily cycle, flash sale, thundering herd, batch sawtooth, going viral),
-  scoring across ten dimensions, skill tree, journal, ADRs and postmortems.
-- Everything is **simulated**. Costs are _estimates_, not AWS prices; nothing touches a real cloud account.
+For aspiring engineers, working software, cloud, DevOps and platform engineers who want practice beyond tutorials and certification questions, and developers growing into system design.
 
-Role-based routes (backend, cloud architect, SRE, FinOps) over the missions, with a next-step view. See [docs/LEARNING_PATHS.md](docs/LEARNING_PATHS.md).
+- React + TypeScript + Vite. No backend, no account, no cloud calls.
+- A deterministic, rule-based simulation engine (pure TypeScript, unit-tested) with explainable causal effects.
+- Everything is **simulated**: costs are estimates, not AWS prices, and nothing touches a real cloud account.
 
-## Quick start
+Topics: system-design, software-architecture, cloud-architecture, aws, sre, devops, chaos-engineering, incident-response, simulator, learning, react, typescript, vite.
+
+## Run it
 
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm test           # unit + integration tests (vitest)
-npm run typecheck
-npm run lint       # ESLint 10 flat config (react-hooks rules, import boundaries)
-npm run format     # Prettier
 npm run check      # typecheck + lint + tests
-npm run build      # static site in dist/ (relative base: host it anywhere)
-npm run preview
+npm run build      # static site in dist/ (relative base, host it anywhere)
 ```
 
-Requires Node 20+. Progress is saved in your browser (`localStorage`); Settings → Export/Import moves it between browsers.
-
-The Lab can run scripted multi-fault exercises and grade impact, recovery and detection. See [docs/GAME_DAYS.md](docs/GAME_DAYS.md).
+Also: `npm test`, `npm run typecheck`, `npm run lint`, `npm run format`, `npm run preview`. Needs Node 20+. Progress is saved in the browser (`localStorage`); Settings → Export/Import moves it between browsers.
 
 ## How to play
 
-1. **Home** — the product promise, the five-stage journey, your progress and the recommended next mission. Pick _Beginner / Intermediate / Advanced_.
-2. **Missions** — start a mission. Read the briefing, constraints and success criteria.
-3. **Investigate** — dock panels under the canvas: Metrics, Logs, Traces, Dependencies, Changes & timeline, Database,
-   Queues, Network inspector, Cost, Security, Alerts. (In incidents, opening a panel costs a simulated minute outside beginner mode.)
-4. **Hypothesise** — record what you think the root cause is (mission panel, left). Diagnosis quality is scored.
-5. **Design** — drag components from the library, connect them (drag handle → handle), configure them in the Selected panel (right).
-   Edits are a _draft_.
-6. **Deploy** — Plan & deploy tab: review the diff, validation and estimated cost change, then _Deploy_. The simulator shows
-   **what changed and why** (e.g. “replicas 4→8 raised DB connections 80→160 of 100; 37% of new connections are refused”).
-7. **Handle consequences** — fix side effects, revert a deploy, or retry the mission.
-8. **Verify & submit** — runs a verification load test, scores 10 dimensions, shows a structured debrief.
+1. Pick a mission and read the briefing, constraints and success criteria.
+2. **Investigate** with the dock panels under the canvas: Metrics, Logs, Traces, Dependencies, Changes, Database, Queues, Network, Cost, Security, Alerts. In incidents, outside beginner mode, opening a panel costs a simulated minute.
+3. **Hypothesise** the root cause in the mission panel. Diagnosis quality is scored.
+4. **Design:** drag components from the library, connect them, configure them in the inspector. Edits are a draft.
+5. **Deploy** from Plan & deploy: review the diff, validation and cost change, then deploy. The simulator explains what changed and why (for example "replicas 4→8 raised DB connections 80→160 of 100; 37% of new connections are refused").
+6. Fix side effects, revert, or retry; then **verify** with a load test, which scores ten dimensions and shows a debrief.
 
-Keyboard: `Space` run/pause, `.` step one minute, `Delete` removes the selected item.
+Keys: `Space` run/pause, `.` step one minute, `Delete` remove the selection.
 
 ## Features
 
@@ -68,9 +49,9 @@ Keyboard: `Space` run/pause, `.` step one minute, `Delete` removes the selected 
 | Canvas effects              | canvas toolbar                      | Animated traffic and component effects while the simulation runs (Subtle, Full, Off).                                                                  | [CANVAS_EFFECTS.md](docs/CANVAS_EFFECTS.md) |
 | Feedback                    | mission debrief, Settings           | Rate a mission and add a note. Stored in this browser only, separate from the game save; you can copy it, export it or open a pre-filled GitHub issue. |                                             |
 
-New features add a row here and their own file under `docs/`.
+A new feature adds a row here and a file under `docs/`.
 
-## The missions
+## Missions
 
 | #   | Mission                     | Kind     | Teaches                                                                                                                                  |
 | --- | --------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -89,56 +70,18 @@ New features add a row here and their own file under `docs/`.
 | 13  | The Regional Outage         | project  | Region versus zone resilience, RTO and RPO, backup and restore, pilot light, warm standby, active/active                                 |
 | 14  | The Blank Page              | project  | designing from requirements: contended inventory, short-TTL caching, zone survival, complexity as a cost                                 |
 
-Journey order: Level 1 = missions 2, 7, 8 · Level 2 = 1, 5, 10 · Level 3 = 4, 6, 11 · Level 4 = 3, 12, 13 · Level 5 = 14, 9. New players start with Mission 2: something is visibly failing, which teaches the investigate-and-fix loop faster than an open design brief.
+Journey order: level 1 = missions 2, 7, 8; level 2 = 1, 5, 10; level 3 = 4, 6, 11; level 4 = 3, 12, 13; level 5 = 14, 9. New players start with mission 2: something visibly fails, which teaches the investigate-and-fix loop faster than an open brief. Every mission has several valid solutions and tempting wrong ones; `src/game/missions.test.ts` encodes both.
 
-Each has multiple valid solutions and tempting wrong ones; `src/game/missions.test.ts` encodes both.
+## Docs
 
-## Architecture
-
-```
-src/
-  app/            entry, providers, routes (React Router, hash + lazy), shell (top nav), dialogs
-  engine/         pure simulation library (no React): catalog, arch, engine, net, cost, analysis, telemetry, params
-  content/        data-driven missions, academy lessons, sandbox templates, journey stages, positioning copy
-  game/           replayable session state machine, scoring, progression, zustand store + persistence, hooks
-  entities/       cross-feature domain widgets (mission buttons)
-  features/       home, missions, incidents, lab/workspace, academy, journal, achievements (no cross-imports)
-  shared/         ui (design-system components on Base UI), lib, hooks
-  styles/         tokens, base, layout, components, features, responsive: CSS cascade layers
-docs/             ARCHITECTURE.md (stack decisions and research), SIMULATION.md (model), MISSIONS.md (authoring), CANVAS_EFFECTS.md (animation)
-```
-
-- **Persistence by replay.** A session is an ordered log of ops (advance / deploy / action / chaos / revert); resuming
-  replays them deterministically, so saves stay tiny and exact.
-- **Clear boundaries for a future backend:** the store is the only persistence consumer (`zustand/persist`); the
-  simulation and scoring are pure functions.
-- See [`docs/SIMULATION.md`](docs/SIMULATION.md) for every rule and [`docs/MISSIONS.md`](docs/MISSIONS.md) to add a scenario. The canvas animation (Effects: Subtle / Full / Off) is described in [`docs/CANVAS_EFFECTS.md`](docs/CANVAS_EFFECTS.md).
+[Architecture and decisions](docs/ARCHITECTURE.md) · [Simulation model](docs/SIMULATION.md) · [Authoring missions](docs/MISSIONS.md) · [Learning paths](docs/LEARNING_PATHS.md) · [Design review](docs/DESIGN_REVIEW.md) · [Attacks](docs/ATTACKS.md) · [Multi-Region](docs/MULTI_REGION.md) · [Game days](docs/GAME_DAYS.md) · [Canvas effects](docs/CANVAS_EFFECTS.md)
 
 ## Deployment
 
-This repository does not commit its build. The site `brunopasqualini.github.io` builds and publishes the app at
-<https://brunopasqualini.github.io/engineering-ops/>:
+This repo does not commit its build. A push to `main` runs `.github/workflows/ci.yml` (typecheck, lint, tests, build), then sends a `repository_dispatch` event (`project-updated`) to [brunopasqualini.github.io](https://github.com/brunopasqualini/brunopasqualini.github.io), which builds the app (`npm ci && npm run build`), copies `dist/` to `/engineering-ops/` and deploys the site. `/engineering-ops/dist/` redirects to `/engineering-ops/` and keeps the `#/…` route.
 
-1. A push to `main` runs `.github/workflows/ci.yml` (typecheck, lint, tests and build).
-2. If they pass, the workflow sends a `repository_dispatch` event (`project-updated`) to `brunopasqualini/brunopasqualini.github.io`.
-3. That repository checks out this one, runs `npm ci && npm run build`, copies `dist/` to `/engineering-ops/` and deploys the site.
+Needs the secret `SITE_DISPATCH_TOKEN` in this repo: a fine-grained token on `brunopasqualini/brunopasqualini.github.io` with **Contents: Read and write** (required to send `repository_dispatch`).
 
-The workflow needs a repository secret named `SITE_DISPATCH_TOKEN`: a fine-grained personal access token with **Contents: Read and write**
-on `brunopasqualini/brunopasqualini.github.io` (GitHub requires that permission to send `repository_dispatch`).
+## Limits
 
-The old URL, `/engineering-ops/dist/`, redirects to `/engineering-ops/` and keeps the `#/…` route.
-
-## Design notes
-
-- **Visual states:** healthy, degraded, overloaded, unavailable, insecure, misconfigured, idle — each with a stated cause.
-- **Progressive disclosure:** the sandbox unlocks tiers by level (or all, in Settings); missions expose only relevant components.
-- **Responsive:** three-column desktop workspace (mission | canvas + evidence | components + inspector) with the side columns collapsible; single-pane workspace with bottom navigation on tablet/phone.
-- **Identity:** dark command-centre palette defined as design tokens in `src/styles/tokens.css`; nodes are category-coloured icon tiles; the canvas shows the real fleet behind each node (instances, replicas, queue depth).
-- **Accessibility:** semantic landmarks, labelled controls, dialogs with focus handling, keyboard-operable controls,
-  `prefers-reduced-motion` respected, status never conveyed by colour alone (text tags + reasons).
-
-## Limitations (by design)
-
-This is an MVP teaching model: small, internally consistent and defensible, not a faithful cloud simulator.
-Terraform/IAM/pipeline artifacts are educational and non-executable. The deployment-strategy and
-multi-region behaviours are intentionally coarse.
+A teaching model: small, internally consistent and defensible, not a faithful cloud simulator. Terraform, IAM and pipeline artifacts are educational and non-executable. Deployment strategies and multi-Region behaviour are deliberately coarse.
