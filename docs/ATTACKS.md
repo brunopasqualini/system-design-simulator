@@ -2,7 +2,9 @@
 
 **Lab → Attack simulation** runs an attack against the **deployed** design and shows how it unfolds, one stage at a time: which defences held, which partly held, which failed and why, how far the damage spreads (marked in red on the canvas), and what to change. It analyses the system; it never changes your run, your draft or your saves.
 
-It is deterministic. Two attacks are rule-based, reading the same settings the security findings read. The third runs through the real simulation engine, so its numbers are measured, not asserted. The timings shown ("T+10 min", "never") are illustrative orders of magnitude for how such an attack unfolds, not measurements, and the panel says so.
+It is deterministic. Two attacks are rule-based, reading the same settings as the security findings; the third runs through the real engine, so its numbers are measured. Timings shown ("T+10 min", "never") are illustrative orders of magnitude, and the panel says so.
+
+![A leaked administrator key: breach timeline and the blast radius on the canvas](attack-simulation/leaked-credential.jpg)
 
 ## The attacks
 

@@ -16,6 +16,8 @@ an optional `profileCycle` (minutes) makes it repeat, which is how the Lab's tra
 batch sawtooth, going viral) are built. The shapes live in `content/trafficShapes.ts`; choosing one only patches the workload, so it is
 recorded and replayed like any other workload operation.
 
+![Flash sale at 16×: 400 → 2,400 rps and the design failing at the peak](traffic-shapes/flash-sale.jpg)
+
 ## Solving a snapshot
 
 1. Build the dependency graph from _flow_ edges (`traffic` and `async`). `attach` and `deploy` edges are metadata.
