@@ -2,6 +2,8 @@
 
 **Plan & deploy → Design review** checks the draft you are editing against anti-patterns the simulation is known to punish. Each finding has a severity, the reason in plain language, the fix, and (where one fits) a link to the Academy lesson behind it. Select a finding's title to jump to the component to change.
 
+![Design review in Plan & deploy](design-review/plan.jpg)
+
 It is **advice, not a gate**: it never blocks a deploy, and a design can be right to break a rule on purpose (the trade-off missions are about exactly that). It complements the **security findings**, which cover exposure and permissions. "Nothing flagged" means none of these rules fired, not that the design meets its requirements.
 
 | Rule | Severity | Fires when | Lesson |

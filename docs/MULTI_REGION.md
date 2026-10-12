@@ -2,6 +2,8 @@
 
 **Lab → Users and Regions** shows what your design does to people in different parts of the world, and what happens when the primary Region is lost. It reads the deployed design and combines it with a simple, explicit network model. It never changes your run.
 
+![One Region (left) against active/active with latency routing (right)](multi-region/before-after.jpg)
+
 You choose where your users are (a preset mix across North America, Europe and Asia-Pacific), the primary Region and the second Region (for DR or active/active). The choices are remembered in this browser.
 
 ## What it shows

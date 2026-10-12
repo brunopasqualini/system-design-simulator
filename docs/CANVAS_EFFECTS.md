@@ -2,6 +2,8 @@
 
 While the simulation runs, the canvas animates. Every effect encodes something the engine already reports; none of it is decoration, and none of it feeds back into the simulation (saves and replays are unaffected).
 
+![Effects on Full: packets along connectors, node effects](canvas-effects/full.jpg)
+
 Choose the level with **Effects** in the canvas toolbar: **Subtle** (default), **Full** or **Off**. The choice is remembered per browser. A system "reduce motion" preference always forces **Off** and disables the button. **Off** keeps the original look: the marching dashes on live connectors and nothing else.
 
 | Effect | Means | Subtle | Full |
